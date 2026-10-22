@@ -17,3 +17,13 @@ def define_posicoes (linha,coluna,orientecao,tamanho):
 
 
 #print (define_posicoes(2,4,'vertical',3))
+
+
+def preenche_frota (frota,nome_navio,linha, coluna, orientacao, tamanho ):
+    lista= define_posicoes(linha,coluna,orientacao, tamanho)
+    resultado=frota
+    if nome_navio not in frota:
+        resultado[nome_navio]=[lista]
+    else:
+        resultado[nome_navio].append(lista)
+    return resultado
