@@ -52,3 +52,19 @@ def posiciona_frota (dicionario):
             i+=1
     return lista
 
+#exercico 5
+def afundados (dicionario,tabuleiro):
+    afundados=0
+    for l in dicionario.values():
+        i=0
+        while i < len(l):
+                j=0
+                c=0
+                while j< len (l[i]):
+                    if tabuleiro[l[i][j][0]][l[i][j][1]]== 'X':
+                        c+=1
+                    j+=1
+                if c==j:
+                    afundados+=1
+                i+=1
+    return afundados
