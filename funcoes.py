@@ -39,5 +39,16 @@ def faz_jogada (tabuleiro, linha, coluna):
     return tabuleiro
 
 
-
+#exercício 4 
+def posiciona_frota (dicionario):
+    lista= [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    for l in dicionario.values():
+        i=0
+        while i < len(l):
+            j=0
+            while j< len (l[i]):
+                lista[l[i][j][0]][l[i][j][1]] = 1
+                j+=1    
+            i+=1
+    return lista
 
