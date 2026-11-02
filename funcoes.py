@@ -69,7 +69,7 @@ def afundados (dicionario,tabuleiro):
                 i+=1
     return afundados
 
-
+#exercicio 6 
 def posicao_valida (dicionario,linha,coluna,orientacao,tamanho):
     lista= define_posicoes (linha,coluna,orientacao,tamanho)
     i=0
