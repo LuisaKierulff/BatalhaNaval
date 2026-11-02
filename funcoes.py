@@ -68,3 +68,17 @@ def afundados (dicionario,tabuleiro):
                     afundados+=1
                 i+=1
     return afundados
+
+
+def posicao_valida (dicionario,linha,coluna,orientacao,tamanho):
+    lista= define_posicoes (linha,coluna,orientacao,tamanho)
+    i=0
+    while i<len(lista):
+        for posicoes in dicionario.values():
+            for c in posicoes:
+                if lista[i] in c:
+                    return False
+        if lista[i][0]>9 or lista[i][1]>9 or lista[i][1]<0 or lista[i][0]<0:
+            return False
+        i+=1
+    return True
