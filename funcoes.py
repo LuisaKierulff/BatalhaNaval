@@ -1,5 +1,6 @@
 # BatalhaNaval
 #Projeto de Batalha Naval desenvolvido em dupla
+#exercício 1
 def define_posicoes (linha,coluna,orientecao,tamanho):
     lista=[]
     if orientecao=='vertical':
@@ -18,7 +19,7 @@ def define_posicoes (linha,coluna,orientecao,tamanho):
 
 #print (define_posicoes(2,4,'vertical',3))
 
-
+#exercício 2
 def preenche_frota (frota,nome_navio,linha, coluna, orientacao, tamanho ):
     lista= define_posicoes(linha,coluna,orientacao, tamanho)
     resultado=frota
@@ -83,8 +84,6 @@ def posicao_valida (dicionario,linha,coluna,orientacao,tamanho):
         i+=1
     return True
 
-
-#exercicio 7
 
 #exercicio 7
 frota = {
