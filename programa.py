@@ -80,38 +80,83 @@ def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
     return texto
 
 
-tabuleiro_jogo= monta_tabuleiros(tabuleiro,tabuleiro_inimigo)
+
+tabuleiro_jogo = monta_tabuleiros(tabuleiro, tabuleiro_inimigo)
 print(tabuleiro_jogo)
-historico_jogadas=[]
-jogando=True
-while jogando==True:
-    
 
-    linha_jogada= int(input('linha'))
-    while linha_jogada not in [0,1,2,3,4,5,6,7,8,9]:
-        print('Linha inválida!')
-        linha_jogada= int(input('linha'))
+historico_jogadas = []
+historico_oponente = []
 
+jogando = True
+turno = 0
 
-    coluna_jogada=int(input('coluna'))
-    while coluna_jogada not in [0,1,2,3,4,5,6,7,8,9]:
-        print('Coluna inválida!')
-        coluna_jogada=int(input('coluna'))
+import random
 
-    jogada=[linha_jogada,coluna_jogada]
-    
-    
-    if jogada in historico_jogadas:
-        print(f'A posição linha {linha_jogada} e coluna {coluna_jogada} já foi informada anteriormente!')
-    else:
-        historico_jogadas.append(jogada)
-        tabuleiro_inimigo= faz_jogada(tabuleiro_inimigo,jogada[0],jogada[1])
-        if afundados(frota_oponente,tabuleiro_inimigo)== 10:
-            print('Parabéns! Você derrubou todos os navios do seu oponente!')
-            jogando=False
-        if jogando==True:
-            tabuleiro_jogo= monta_tabuleiros(tabuleiro,tabuleiro_inimigo)
-            print(tabuleiro_jogo)       
+while jogando:
+
+    # Exercício 8 - Jogada do jogador
+    while turno % 2 == 0 and jogando:
+
+        linha_jogada = int(input('linha'))
+        while linha_jogada not in range(10):
+            print('Linha inválida!')
+            linha_jogada = int(input('linha'))
+
+        coluna_jogada = int(input('coluna'))
+        while coluna_jogada not in range(10):
+            print('Coluna inválida!')
+            coluna_jogada = int(input('coluna'))
+
+        jogada = [linha_jogada, coluna_jogada]
+
+        if jogada in historico_jogadas:
+            print(f'A posição linha {linha_jogada} e coluna {coluna_jogada} já foi informada anteriormente!')
+
+        else:
+            historico_jogadas.append(jogada)
+
+            tabuleiro_inimigo = faz_jogada(
+                tabuleiro_inimigo,
+                linha_jogada,
+                coluna_jogada
+            )
+
+            if afundados(frota_oponente, tabuleiro_inimigo) == 10:
+                print('Parabéns! Você derrubou todos os navios do seu oponente!')
+                jogando = False
+
+            turno += 1
+
+    # Exercício 9 - Jogada do oponente
+    while turno % 2 == 1 and jogando:
+
+        linha_oponente = random.randint(0, 9)
+        coluna_oponente = random.randint(0, 9)
+
+        if [linha_oponente, coluna_oponente] not in historico_oponente:
+
+            historico_oponente.append([linha_oponente, coluna_oponente])
+
+            print(f'Seu oponente está atacando na linha {linha_oponente} e coluna {coluna_oponente}')
+
+            tabuleiro = faz_jogada(
+                tabuleiro,
+                linha_oponente,
+                coluna_oponente
+            )
+
+            if afundados(frota, tabuleiro) == 10:
+                print('Xi! O oponente derrubou toda a sua frota =(')
+                jogando = False
+
+            if jogando:
+                tabuleiro_jogo = monta_tabuleiros(
+                    tabuleiro,
+                    tabuleiro_inimigo
+                )
+                print(tabuleiro_jogo)
+
+            turno += 1
 
 
 
